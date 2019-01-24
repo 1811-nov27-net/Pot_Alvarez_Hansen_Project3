@@ -9,6 +9,7 @@
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
  xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
  xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
  xmlns:ui="http://schemas.uipath.com/workflow/activities"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
@@ -36,6 +37,7 @@
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>Newtonsoft.Json.Linq</x:String>
       <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Xml.Serialization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -62,6 +64,7 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.PDF</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Plugin.Workflow</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
@@ -69,30 +72,81 @@
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="jsonString" />
       <Variable x:TypeArguments="njl:JObject" Name="config" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_Assets" />
     </Flowchart.Variables>
     <Flowchart.StartNode>
       <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_7">
-        <ui:ReadPDFText DisplayName="Read PDF Text - config.pdf" FileName="AccessoryFiles\config.pdf" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Password="password" Range="All" Text="[jsonString]" />
+        <ui:ReadPDFText DisplayName="Read PDF Text - config.pdf (Read credentials)" FileName="AccessoryFiles\config.pdf" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Password="password" Range="All" Text="[jsonString]" />
         <FlowStep.Next>
           <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_1">
             <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON - convert string from config.pdf to jsonObject" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[config]" JsonString="[jsonString]" />
             <FlowStep.Next>
-              <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_8">
+              <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_8">
                 <ui:LogMessage DisplayName="Log Message -config value" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;config (jsonObject) is &quot; + config.ToString]" />
                 <FlowStep.Next>
-                  <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_6">
-                    <ui:SetAsset TimeoutMS="{x:Null}" AssetName="filePath" DisplayName="Set Asset - filePath" sap2010:WorkflowViewState.IdRef="SetAsset_1" Value="[config(&quot;filePath&quot;).ToString]" />
+                  <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_11">
+                    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - Read Assets" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\Data\Config.xlsx">
+                      <ui:ExcelApplicationScope.Body>
+                        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                            <ui:ExcelReadRange AddHeaders="True" DataTable="[dt_Assets]" DisplayName="Read Range" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Assets">
+                              <ui:ExcelReadRange.Range>
+                                <InArgument x:TypeArguments="x:String">
+                                  <Literal x:TypeArguments="x:String" Value="" />
+                                </InArgument>
+                              </ui:ExcelReadRange.Range>
+                            </ui:ExcelReadRange>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ExcelApplicationScope.Body>
+                    </ui:ExcelApplicationScope>
                     <FlowStep.Next>
-                      <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_5">
-                        <ui:SetAsset TimeoutMS="{x:Null}" AssetName="url" DisplayName="Set Asset - url" sap2010:WorkflowViewState.IdRef="SetAsset_2" Value="[config(&quot;url&quot;).ToString]" />
+                      <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_10">
+                        <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dt_Assets]" DisplayName="For Each Row" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                          <ui:ForEachRow.Body>
+                            <ActivityAction x:TypeArguments="sd:DataRow">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:String" Name="name" />
+                                  <Variable x:TypeArguments="x:String" Name="asset" />
+                                </Sequence.Variables>
+                                <Assign DisplayName="Assign - name" sap2010:WorkflowViewState.IdRef="Assign_1">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[name]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[row(0).ToString]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <ui:LogMessage DisplayName="Log Message - name" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;name is &quot; + name]" />
+                                <Assign DisplayName="Assign - asset" sap2010:WorkflowViewState.IdRef="Assign_2">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[asset]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[row(1).ToString]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <ui:LogMessage DisplayName="Log Message - asset" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;asset is &quot; + asset]" />
+                                <ui:SetAsset TimeoutMS="{x:Null}" AssetName="[name]" DisplayName="Set Asset" sap2010:WorkflowViewState.IdRef="SetAsset_3" Value="[asset]" />
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:ForEachRow.Body>
+                        </ui:ForEachRow>
                         <FlowStep.Next>
-                          <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+                          <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_4">
                             <ui:SetCredential TimeoutMS="{x:Null}" CredentialName="pegaLoginCred" DisplayName="Set Credential - pegaLoginCred" sap2010:WorkflowViewState.IdRef="SetCredential_1" Password="[config(&quot;password&quot;).ToString]" UserName="[config(&quot;username&quot;).ToString]" />
                             <FlowStep.Next>
-                              <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+                              <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_3">
                                 <ui:SetCredential TimeoutMS="{x:Null}" CredentialName="cCardNumberCred" DisplayName="Set Credential - cCardNumberCred" sap2010:WorkflowViewState.IdRef="SetCredential_2" Password="[config(&quot;cCardNumber&quot;).ToString]" UserName="CreditCardNumber" />
                                 <FlowStep.Next>
-                                  <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                                  <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_2">
                                     <ui:SetCredential TimeoutMS="{x:Null}" CredentialName="cCardPINCred" DisplayName="Set Credential - cCardPINCred" sap2010:WorkflowViewState.IdRef="SetCredential_3" Password="[config(&quot;cCardPIN&quot;).ToString]" UserName="cCardPIN" />
                                   </FlowStep>
                                 </FlowStep.Next>
@@ -118,7 +172,7 @@
     <x:Reference>__ReferenceID5</x:Reference>
     <x:Reference>__ReferenceID6</x:Reference>
     <x:Reference>__ReferenceID7</x:Reference>
-    <sads:DebugSymbol.Symbol>d1ZDOlxyZXZhdHVyZVxVaXBhdGggUHJvY2Vzc2VzXFBvdF9BbGF2cmV6X0hhbnNlblByb2ozXEluaXRpYWxpemF0aW9uXENvbmZpZ3VyYXRpb24ueGFtbB1EA3oPAgEBSwlLzQECARtODU71AQIBFlERUcgBAgEUVBVUzgECARFXGVfDAQIBDlodWqoCAgEKXSFdngICAQZgJWCRAgIBAku8AUvKAQIBH0tLS2YCAR5LsQFLtgECAR1LoAFLqgECARxO5AFO8gECARlOzgFO2AECARdRjAFRxQECARVUogFUywECARNUQVRLAgESV5wBV8ABAgEQV0VXSgIBD1r+AVqnAgIBDVrLAVr0AQIBDFpTWmICAQtdiQJdmwICAQld0wFd/wECAQhdV11oAgEHYIQCYI4CAgEFYNEBYPoBAgEEYFtgaQIBAw==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d1ZDOlxyZXZhdHVyZVxVaXBhdGggUHJvY2Vzc2VzXFBvdF9BbGF2cmV6X0hhbnNlblByb2ozXEluaXRpYWxpemF0aW9uXENvbmZpZ3VyYXRpb24ueGFtbC5HA7ABDwIBAU8JT+ABAgE0Ug1S9QECAS9VEVXIAQIBLVgVaTACASVsGY0BKQIBDpABHZABqgICAQqTASGTAZ4CAgEGlgEllgGRAgIBAk/PAU/dAQIBOE9eT3kCATdPxAFPyQECATZPswFPvQECATVS5AFS8gECATJSzgFS2AECATBVjAFVxQECAS5YvgFYjwICASxeG2YmAgEmbEpsVwIBI3IfigEqAgEPkAH+AZABpwICAQ2QAcsBkAH0AQIBDJABU5ABYgIBC5MBiQKTAZsCAgEJkwHTAZMB/wECAQiTAVeTAWgCAQeWAYQClgGOAgIBBZYB0QGWAfoBAgEElgFblgFpAgEDXx1lMQIBJ3chfioCAR9/IX+3AQIBHIABIYcBKgIBGIgBIYgBugECARWJASGJAa0BAgEQX0xfWQIBKmIjYlICASlfsAFfuAECASh8THxdAgEieU15UwIBIH+VAX+0AQIBHYUBTIUBXQIBG4IBTYIBVAIBGYgBlgGIAbcBAgEWiQGhAYkBqgECAROJAU2JAVUCARE=</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -143,14 +197,40 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="SetAsset_1" sap:VirtualizedContainerService.HintSize="200,22.4">
+      <sap2010:ViewStateData Id="ExcelReadRange_1" sap:VirtualizedContainerService.HintSize="314.4,60" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336.8,184.8">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="SetAsset_2" sap:VirtualizedContainerService.HintSize="200,22.4">
+      <sap2010:ViewStateData Id="ExcelApplicationScope_1" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="314.4,60" />
+      <sap2010:ViewStateData Id="LogMessage_2" sap:VirtualizedContainerService.HintSize="314.4,92.8" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="314.4,60" />
+      <sap2010:ViewStateData Id="LogMessage_3" sap:VirtualizedContainerService.HintSize="314.4,92.8" />
+      <sap2010:ViewStateData Id="SetAsset_3" sap:VirtualizedContainerService.HintSize="314.4,22.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336.8,612.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_1" sap:VirtualizedContainerService.HintSize="200,52.8">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -181,7 +261,7 @@
       <sap2010:ViewStateData Id="FlowStep_2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">200.2,737.3</av:Point>
+            <av:Point x:Key="ShapeLocation">200.2,807.3</av:Point>
             <av:Size x:Key="ShapeSize">200,22.4</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -189,36 +269,36 @@
       <sap2010:ViewStateData Id="FlowStep_3">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">200.2,664.9</av:Point>
+            <av:Point x:Key="ShapeLocation">200.2,734.9</av:Point>
             <av:Size x:Key="ShapeSize">200,22.4</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300.2,687.3 300.2,737.3</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">300.2,757.3 300.2,807.3</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="FlowStep_4">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">200.2,592.5</av:Point>
+            <av:Point x:Key="ShapeLocation">200.2,662.5</av:Point>
             <av:Size x:Key="ShapeSize">200,22.4</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300.2,614.9 300.2,664.9</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">300.2,684.9 300.2,734.9</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="FlowStep_5">
+      <sap2010:ViewStateData Id="FlowStep_10">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">200.2,520.1</av:Point>
-            <av:Size x:Key="ShapeSize">200,22.4</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300.2,542.5 300.2,592.5</av:PointCollection>
+            <av:Point x:Key="ShapeLocation">200.2,553.3</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300.2,606.1 300.2,662.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="FlowStep_6">
+      <sap2010:ViewStateData Id="FlowStep_11">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">200.2,447.7</av:Point>
-            <av:Size x:Key="ShapeSize">200,22.4</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300.2,470.1 300.2,520.1</av:PointCollection>
+            <av:Point x:Key="ShapeLocation">200.2,450.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300.2,503.3 300.2,553.3</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
@@ -227,7 +307,7 @@
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">200.2,347.7</av:Point>
             <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300.2,400.5 300.2,447.7</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">300.2,400.5 300.2,450.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
@@ -249,18 +329,18 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614.4,796.8">
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614.4,1256.8">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
             <av:Size x:Key="ShapeSize">60,75.2</av:Size>
             <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,107.7 300.2,107.7 300.2,127.7</av:PointCollection>
-            <x:Double x:Key="Height">759.69999999999993</x:Double>
+            <x:Double x:Key="Height">1219.7</x:Double>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Configuration_1" sap:VirtualizedContainerService.HintSize="654.4,756.8" />
+      <sap2010:ViewStateData Id="Configuration_1" sap:VirtualizedContainerService.HintSize="654.4,1122.4" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
