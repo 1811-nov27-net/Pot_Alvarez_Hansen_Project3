@@ -1137,9 +1137,9 @@
     "restore": {
       "projectUniqueName": "Initialization",
       "projectName": "Initialization",
-      "projectPath": "C:\\revature\\Uipath Processes\\Pot_Alavrez_HansenProj3\\Initialization\\.local",
+      "projectPath": "C:\\revature\\Uipath Processes\\Pot_Alavrez_HansenProj3\\Project_3\\Initialization\\.local",
       "packagesPath": "C:\\Users\\Beau\\.nuget\\packages\\",
-      "outputPath": "C:\\revature\\Uipath Processes\\Pot_Alavrez_HansenProj3\\Initialization\\.local"
+      "outputPath": "C:\\revature\\Uipath Processes\\Pot_Alavrez_HansenProj3\\Project_3\\Initialization\\.local"
     },
     "frameworks": {
       "net461": {
