@@ -1,0 +1,8 @@
+{"filePath": "AccessoryFiles/Orders.xlsx",
+"url": "http://training.openspan.com/login",
+"username": "Charlie",
+"password": "char123!",
+"cCardNumber": "1111222233334444",
+"cCardPIN": "111"
+}
+
