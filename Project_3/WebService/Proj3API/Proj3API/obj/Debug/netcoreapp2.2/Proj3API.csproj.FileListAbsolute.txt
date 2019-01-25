@@ -1,0 +1,14 @@
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\bin\Debug\netcoreapp2.2\Proj3API.deps.json
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\bin\Debug\netcoreapp2.2\Proj3API.runtimeconfig.json
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\bin\Debug\netcoreapp2.2\Proj3API.runtimeconfig.dev.json
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\bin\Debug\netcoreapp2.2\Proj3API.dll
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.csprojAssemblyReference.cache
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.csproj.CoreCompileInputs.cache
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.RazorAssemblyInfo.cache
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.RazorAssemblyInfo.cs
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.AssemblyInfoInputs.cache
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.AssemblyInfo.cs
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.RazorTargetAssemblyInfo.cache
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\bin\Debug\netcoreapp2.2\Proj3API.pdb
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.dll
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.pdb

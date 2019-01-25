@@ -1,0 +1,17 @@
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\bin\Debug\netcoreapp2.2\Proj3API.DataAccess.dll
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.App.csprojAssemblyReference.cache
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.App.csproj.CoreCompileInputs.cache
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.App.RazorAssemblyInfo.cache
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.App.RazorAssemblyInfo.cs
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.App.AssemblyInfoInputs.cache
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.App.AssemblyInfo.cs
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.App.RazorTargetAssemblyInfo.cache
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\bin\Debug\netcoreapp2.2\Proj3API.App.deps.json
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\bin\Debug\netcoreapp2.2\Proj3API.App.runtimeconfig.json
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\bin\Debug\netcoreapp2.2\Proj3API.App.runtimeconfig.dev.json
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\bin\Debug\netcoreapp2.2\Proj3API.App.dll
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\bin\Debug\netcoreapp2.2\Proj3API.App.pdb
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\bin\Debug\netcoreapp2.2\Proj3API.DataAccess.pdb
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.App.csproj.CopyComplete
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.App.dll
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.App.pdb
