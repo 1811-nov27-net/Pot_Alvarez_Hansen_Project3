@@ -71,3 +71,22 @@ CREATE TABLE PB.ProductType
 	TypeName NVARCHAR(100) NOT NULL,
 	PRIMARY KEY (Id)
 )
+
+ALTER TABLE PB.OrderHeaders
+	ADD CONSTRAINT FK_OrderHeaders_People FOREIGN KEY (BillingPersonId) REFERENCES PB.People(Id);
+ALTER TABLE PB.OrderHeaders
+	ADD CONSTRAINT FK_OrderHeaders_People_ShippingPersonId FOREIGN KEY (ShippingPersonId) REFERENCES PB.People(Id);
+
+ALTER TABLE PB.OrderDetail
+	ADD CONSTRAINT FK_OrderDetail_OrderHeaders_OrderHeaderId FOREIGN KEY (OrderHeaderId) REFERENCES PB.OrderHeaders(Id);
+ALTER TABLE PB.OrderDetail
+	ADD CONSTRAINT FK_OrderDetail_Products_ProductId FOREIGN KEY (ProductId) REFERENCES PB.Products(Id);
+
+ALTER TABLE PB.Products
+	ADD CONSTRAINT FK_Products_ProductType_ProductTypeId FOREIGN KEY (ProductTypeId) REFERENCES PB.ProductType(Id);
+
+ALTER TABLE PB.People
+	ADD CONSTRAINT FK_People_Company_CompanyId FOREIGN KEY (CompanyNameId) REFERENCES PB.Company(Id);
+
+ALTER TABLE PB.Invoice
+	ADD CONSTRAINT FK_Invoice_OrderHeaders_OrderHeaderId FOREIGN KEY (OrderHeaderId) REFERENCES PB.OrderHeaders(Id);
