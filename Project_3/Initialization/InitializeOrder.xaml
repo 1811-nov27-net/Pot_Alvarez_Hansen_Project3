@@ -14,6 +14,7 @@
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_queueName" Type="InArgument(x:String)" />
+    <x:Property Name="in_MaxOrderNumber" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -69,6 +70,7 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.PDF</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
@@ -76,6 +78,8 @@
     <Flowchart.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_Orders" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_Address" />
+      <Variable x:TypeArguments="x:Int32" Name="maxOrderNumber" />
+      <Variable x:TypeArguments="x:Boolean" Name="parseMON" />
     </Flowchart.Variables>
     <Flowchart.StartNode>
       <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_1">
@@ -105,57 +109,106 @@
           </ui:ExcelApplicationScope.Body>
         </ui:ExcelApplicationScope>
         <FlowStep.Next>
-          <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_2">
-            <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dt_Orders]" DisplayName="For Each Row - Send orders to Queue" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-              <ui:ForEachRow.Body>
-                <ActivityAction x:TypeArguments="sd:DataRow">
-                  <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
-                  </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                    <Sequence.Variables>
-                      <Variable x:TypeArguments="ui:GenericValue" Name="Name" />
-                      <Variable x:TypeArguments="ui:GenericValue" Name="Quantity" />
-                      <Variable x:TypeArguments="ui:GenericValue" Name="Type" />
-                    </Sequence.Variables>
-                    <Assign DisplayName="Assign - Name" sap2010:WorkflowViewState.IdRef="Assign_1">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="ui:GenericValue">[Name]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="ui:GenericValue">[row(0).ToString]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <ui:LogMessage DisplayName="Log Message - Name" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Product Name retrieved as &quot; + Name]" />
-                    <Assign DisplayName="Assign - Quantity" sap2010:WorkflowViewState.IdRef="Assign_2">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="ui:GenericValue">[Quantity]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="ui:GenericValue">[row(1).ToString]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <ui:LogMessage DisplayName="Log Message - Quantity" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Quantity retrieved as  &quot; + Quantity]" />
-                    <Assign DisplayName="Assign - Type" sap2010:WorkflowViewState.IdRef="Assign_3">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="ui:GenericValue">[Type]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="ui:GenericValue">[row(2).ToString]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <ui:LogMessage DisplayName="Log Message - Type" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Product Type retrived as &quot; + Type]" />
-                    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_queueName]">
-                      <ui:AddQueueItem.ItemInformation>
-                        <InArgument x:TypeArguments="x:String" x:Key="Product Name">[Name]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Quantity Ordered">[Quantity]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Product Type">[Type]</InArgument>
-                      </ui:AddQueueItem.ItemInformation>
-                    </ui:AddQueueItem>
-                  </Sequence>
-                </ActivityAction>
-              </ui:ForEachRow.Body>
-            </ui:ForEachRow>
+          <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_6">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Boolean">[parseMON]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Boolean">[Int32.TryParse(in_MaxOrderNumber, maxOrderNumber)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dt_Orders]" DisplayName="For Each Row - Send orders to Queue" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                  <ui:ForEachRow.Body>
+                    <ActivityAction x:TypeArguments="sd:DataRow">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="ui:GenericValue" Name="Name" />
+                          <Variable x:TypeArguments="ui:GenericValue" Name="Quantity" />
+                          <Variable x:TypeArguments="ui:GenericValue" Name="Type" />
+                          <Variable x:TypeArguments="x:Boolean" Name="parse" />
+                          <Variable x:TypeArguments="x:Int32" Name="quantityInt" />
+                        </Sequence.Variables>
+                        <Assign DisplayName="Assign - Name" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="ui:GenericValue">[Name]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="ui:GenericValue">[row(0).ToString]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:LogMessage DisplayName="Log Message - Name" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Product Name retrieved as &quot; + Name]" />
+                        <Assign DisplayName="Assign - Quantity" sap2010:WorkflowViewState.IdRef="Assign_2">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="ui:GenericValue">[Quantity]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="ui:GenericValue">[row(1).ToString]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:LogMessage DisplayName="Log Message - Quantity" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Quantity retrieved as  &quot; + Quantity]" />
+                        <Assign DisplayName="Assign - Type" sap2010:WorkflowViewState.IdRef="Assign_3">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="ui:GenericValue">[Type]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="ui:GenericValue">[row(2).ToString]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:LogMessage DisplayName="Log Message - Type" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Product Type retrived as &quot; + Type]" />
+                        <Assign sap2010:WorkflowViewState.IdRef="Assign_4">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Boolean">[parse]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Boolean">[Int32.TryParse(Quantity, quantityInt)]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <If Condition="[parse AND quantityInt &gt; maxOrderNumber]" sap2010:WorkflowViewState.IdRef="If_1">
+                          <If.Then>
+                            <DoWhile DisplayName="Do While" sap2010:WorkflowViewState.IdRef="DoWhile_1" Condition="[quantityInt &gt; 0]">
+                              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                <ui:LogMessage DisplayName="Log Message - quantityInt " sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;quantityInt is &quot; + quantityInt.ToString]" />
+                                <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" Priority="Normal" QueueType="[in_queueName]">
+                                  <ui:AddQueueItem.ItemInformation>
+                                    <InArgument x:TypeArguments="x:String" x:Key="Product Name">[Name]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="Quantity Ordered">[quantityInt.ToString]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="Product Type">[Type]</InArgument>
+                                  </ui:AddQueueItem.ItemInformation>
+                                </ui:AddQueueItem>
+                                <Assign sap2010:WorkflowViewState.IdRef="Assign_5">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[quantityInt]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[quantityInt - maxOrderNumber]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <ui:LogMessage DisplayName="Log Message - quantityIntNew " sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;quantityIntNew is &quot; + quantityInt.ToString]" />
+                              </Sequence>
+                            </DoWhile>
+                          </If.Then>
+                          <If.Else>
+                            <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap2010:WorkflowViewState.IdRef="AddQueueItem_3" Priority="Normal" QueueType="[in_queueName]">
+                              <ui:AddQueueItem.ItemInformation>
+                                <InArgument x:TypeArguments="x:String" x:Key="Product Name">[Name]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="Quantity Ordered">[Quantity]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="Product Type">[Type]</InArgument>
+                              </ui:AddQueueItem.ItemInformation>
+                            </ui:AddQueueItem>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:ForEachRow.Body>
+                </ui:ForEachRow>
+              </FlowStep>
+            </FlowStep.Next>
           </FlowStep>
         </FlowStep.Next>
       </FlowStep>
@@ -174,7 +227,8 @@
         </ui:ForEachRow.Body>
       </ui:ForEachRow>
     </FlowStep>
-    <sads:DebugSymbol.Symbol>d1hDOlxyZXZhdHVyZVxVaXBhdGggUHJvY2Vzc2VzXFBvdF9BbGF2cmV6X0hhbnNlblByb2ozXEluaXRpYWxpemF0aW9uXEluaXRpYWxpemVPcmRlci54YW1sJAFnAXoBAksDsgEPAgEBUglqJAIBHm0NngEdAgECUrIBUoQCAgEqWA9nGgIBH20+bUsCARxzE5sBHgIBA1kRXyUCASVgEWYlAgEgeRWAAR4CARiBARWBAb0BAgEWggEViQEeAgESigEVigHCAQIBEIsBFZIBHgIBDJMBFZMBvAECAQqUARWaAScCAQRZQFlNAgEoXBdcRgIBJ1mtAVm1AQIBJmBAYE4CASNjF2NGAgEiYK8BYLgBAgEhfkd+WAIBG3tIe04CARmBAYkBgQG6AQIBF4cBR4cBWAIBFYQBSIQBUgIBE4oBjQGKAb8BAgERkAFHkAFYAgEPjQFIjQFOAgENkwGJAZMBuQECAQuUAcMBlAHTAQIBCJYBVZYBWwIBB5gBVZgBWwIBBpcBWZcBYwIBBQ==</sads:DebugSymbol.Symbol>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <sads:DebugSymbol.Symbol>d2JDOlxyZXZhdHVyZVxVaXBhdGggUHJvY2Vzc2VzXFBvdF9BbGF2cmV6X0hhbnNlblByb2ozXFByb2plY3RfM1xJbml0aWFsaXphdGlvblxJbml0aWFsaXplT3JkZXIueGFtbDsBZwF6AQJNA+gBDwIBAVYJbiQCAUJxDXgWAgE+exHRASECAQJWsgFWhAICAU5cD2saAgFDdjl2bAIBQXM6c0QCAT97QntPAgE8gQEXzgEiAgEDXRFjJQIBSWQRaiUCAUSJARmQASICATiRARmRAcEBAgE2kgEZmQEiAgEymgEZmgHGAQIBMJsBGaIBIgIBLKMBGaMBwAECASqkARmrASICASasARnNAR4CAQRdQF1NAgFMYBdgRgIBS12tAV21AQIBSmRAZE4CAUdnF2dGAgFGZK8BZLgBAgFFjgFLjgFcAgE7iwFMiwFSAgE5kQGNAZEBvgECATeXAUuXAVwCATWUAUyUAVYCATOaAZEBmgHDAQIBMaABS6ABXAIBL50BTJ0BUgIBLaMBjQGjAb0BAgErqQFFqQFsAgEppgFGpgFNAgEnrAEnrAFUAgEFrgEdwgEnAgEPxQEdywEvAgEJrgFzrgGJAQIBJK8BH8EBKgIBEMUBywHFAdsBAgENxwFdxwFjAgEMyQFdyQFjAgELyAFhyAFrAgEKsAEhsAHWAQIBIbEBIbcBMwIBGrgBIb8BKgIBFMABIcAB3AECARGwAZ0BsAHTAQIBIrEBzwGxAd8BAgEfswFhswFnAgEetQFhtQFnAgEdtAFltAF7AgEbvQFLvQFpAgEXugFMugFZAgEVwAGgAcAB2QECARI=</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -194,21 +248,42 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="314.4,60" />
-      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="314.4,92.8" />
-      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="314.4,60" />
-      <sap2010:ViewStateData Id="LogMessage_2" sap:VirtualizedContainerService.HintSize="314.4,92.8" />
-      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="314.4,60" />
-      <sap2010:ViewStateData Id="LogMessage_3" sap:VirtualizedContainerService.HintSize="314.4,92.8" />
-      <sap2010:ViewStateData Id="AddQueueItem_1" sap:VirtualizedContainerService.HintSize="314.4,22.4" />
-      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="336.8,845.6">
+      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="243.2,60">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ForEachRow_1" sap:VirtualizedContainerService.HintSize="367.2,994.4">
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="688.8,60" />
+      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="688.8,92.8" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="688.8,60" />
+      <sap2010:ViewStateData Id="LogMessage_2" sap:VirtualizedContainerService.HintSize="688.8,92.8" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="688.8,60" />
+      <sap2010:ViewStateData Id="LogMessage_3" sap:VirtualizedContainerService.HintSize="688.8,92.8" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="688.8,60" />
+      <sap2010:ViewStateData Id="LogMessage_4" sap:VirtualizedContainerService.HintSize="314.4,92.8" />
+      <sap2010:ViewStateData Id="AddQueueItem_2" sap:VirtualizedContainerService.HintSize="314.4,22.4" />
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="314.4,60" />
+      <sap2010:ViewStateData Id="LogMessage_5" sap:VirtualizedContainerService.HintSize="314.4,92.8" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="336.8,512.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DoWhile_1" sap:VirtualizedContainerService.HintSize="464,675.2" />
+      <sap2010:ViewStateData Id="AddQueueItem_3" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="688.8,824.8" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="711.2,1748">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_1" sap:VirtualizedContainerService.HintSize="741.6,1896.8">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -218,8 +293,17 @@
       <sap2010:ViewStateData Id="FlowStep_2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">200,230.5</av:Point>
+            <av:Point x:Key="ShapeLocation">200,330.5</av:Point>
             <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">178.895,220.5</av:Point>
+            <av:Size x:Key="ShapeSize">243.2,60</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300.495,280.5 300.495,310.5 300,310.5 300,330.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
@@ -228,7 +312,7 @@
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">200,127.7</av:Point>
             <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300,180.5 300,230.5</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">300,180.5 300,210.5 300.495,210.5 300.495,220.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
@@ -242,7 +326,7 @@
       <sap2010:ViewStateData Id="FlowStep_3">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">200,344.02</av:Point>
+            <av:Point x:Key="ShapeLocation">200,424.02</av:Point>
             <av:Size x:Key="ShapeSize">200,52.8</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
