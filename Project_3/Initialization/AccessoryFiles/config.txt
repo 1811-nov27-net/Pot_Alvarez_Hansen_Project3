@@ -1,6 +1,18 @@
-{"username": "Charlie",
-"password": "charlie",
-"cCardNumber": "1111222233334444",
-"cCardPIN": "111"
+{
+	"pegaOrderCred":
+	{
+		"username": "Charlie",
+		"password": "charlie"
+	},
+	"cCardNumberCred":
+	{
+		"username": "CreditCardNumber",
+		"password": "1111222233334444"
+	},
+	"cCardPINCred":
+	{
+		"username": "cCardPIN",
+		"password": "111"
+	}
 }
 

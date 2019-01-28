@@ -943,6 +943,15 @@
         "compile": {
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
+      },
+      "Proj3API.Library/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Proj3API.Library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Proj3API.Library.dll": {}
+        }
       }
     }
   },
@@ -3603,13 +3612,19 @@
         "system.threading.tasks.4.0.11.nupkg.sha512",
         "system.threading.tasks.nuspec"
       ]
+    },
+    "Proj3API.Library/1.0.0": {
+      "type": "project",
+      "path": "../Proj3API.Library/Proj3API.Library.csproj",
+      "msbuildProject": "../Proj3API.Library/Proj3API.Library.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.2.1",
       "Microsoft.EntityFrameworkCore.Tools >= 2.2.1",
-      "Microsoft.NETCore.App >= 2.2.0"
+      "Microsoft.NETCore.App >= 2.2.0",
+      "Proj3API.Library >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3641,7 +3656,11 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\revature\\Uipath Processes\\Pot_Alavrez_HansenProj3\\Project_3\\WebService\\Proj3API\\Proj3API.Library\\Proj3API.Library.csproj": {
+              "projectPath": "C:\\revature\\Uipath Processes\\Pot_Alavrez_HansenProj3\\Project_3\\WebService\\Proj3API\\Proj3API.Library\\Proj3API.Library.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

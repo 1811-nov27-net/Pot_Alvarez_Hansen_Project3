@@ -13,5 +13,6 @@ namespace Proj3API.DataAccess.Repository
         {
             db = _db ?? throw new ArgumentNullException(nameof(db));
         }
+
     }
 }

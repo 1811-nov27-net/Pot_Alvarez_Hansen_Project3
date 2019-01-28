@@ -4752,13 +4752,23 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.1"
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.1",
+          "Proj3API.Library": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Proj3API.DataAccess.dll": {}
         },
         "runtime": {
           "bin/placeholder/Proj3API.DataAccess.dll": {}
+        }
+      },
+      "Proj3API.Library/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Proj3API.Library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Proj3API.Library.dll": {}
         }
       }
     }
@@ -13013,6 +13023,11 @@
       "type": "project",
       "path": "../Proj3API.DataAccess/Proj3API.DataAccess.csproj",
       "msbuildProject": "../Proj3API.DataAccess/Proj3API.DataAccess.csproj"
+    },
+    "Proj3API.Library/1.0.0": {
+      "type": "project",
+      "path": "../Proj3API.Library/Proj3API.Library.csproj",
+      "msbuildProject": "../Proj3API.Library/Proj3API.Library.csproj"
     }
   },
   "projectFileDependencyGroups": {
