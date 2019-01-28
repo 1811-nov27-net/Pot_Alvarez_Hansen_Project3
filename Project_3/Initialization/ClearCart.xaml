@@ -90,7 +90,7 @@
                     <Variable x:TypeArguments="s:String[]" Name="items" />
                     <Variable x:TypeArguments="x:Boolean" Name="eleExists" />
                   </Sequence.Variables>
-                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'User Name'" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'User Name'" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -115,7 +115,7 @@
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
                     </ui:SendHotkey.Target>
                   </ui:SendHotkey>
-                  <ui:TypeSecureText DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Secure 'password' into 'Password' Text Box" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeSecureText_1" SecureText="[in_LoginPasswordSecure]" SendWindowMessages="False" SimulateType="False">
+                  <ui:TypeSecureText DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Secure 'password' into 'Password' Text Box" EmptyField="True" sap2010:WorkflowViewState.IdRef="TypeSecureText_1" SecureText="[in_LoginPasswordSecure]" SendWindowMessages="False" SimulateType="True">
                     <ui:TypeSecureText.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="d2e8ec397c31151b08f81b8c48c682f4" Selector="&lt;webctrl id='user_pass' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
                     </ui:TypeSecureText.Target>
@@ -287,7 +287,7 @@
       </Sequence>
     </FlowStep>
     <x:Reference>__ReferenceID0</x:Reference>
-    <sads:DebugSymbol.Symbol>d1xDOlxyZXZhdHVyZVxVaXBhdGggUHJvY2Vzc2VzXFBvdF9BbGF2cmV6X0hhbnNlblByb2ozXFByb2plY3RfM1xJbml0aWFsaXphdGlvblxDbGVhckNhcnQueGFtbDEBXAF/AQJJA6MCDwIBAUwJ5QEUAgECTQvkARwCAQNNzgFN3wECAThTEeEBHAIBBF0Tax4CATZsE3AhAgEycRN1IwIBMHYTeicCASx7E4IBHgIBKIMBE5EBHgIBJpIBE5YBKAIBIZcBE64BGwIBFK8BE70BHgIBEr4BE8UBJQIBDcYBE9cBIwIBDNgBE98BHAIBCOABE+ABzwECAQVppgFp1AECATdupgFu1AECATVssgJsxgICATNx/gFxgwICATF4pgF41AECAS92pQJ2vwICAS2AAaYBgAHXAQIBK30/fUMCASp9Mn02AgEpjwGmAY8B2AECASeUAZEBlAGYAgIBJZQBowKUAakCAgEkkgFbkgFoAgEimAEVrQEgAgEXlwF9lwGKAQIBFbsBpgG7AdcBAgETvgFJvgFQAgEQwAFBwAFIAgEOwwGmAcMB3QECARHdAT7dAUoCAQvaAT/aAVMCAQngAZEB4AHMAQIBBpkBF6cBIgIBHagBF6wBLAIBGKUBlQGlAZwCAgEgmQFZmQFfAgEfpQGnAqUBrQICAR6qAZUBqgGcAgIBHKoBpwKqAa0CAgEbqAFfqAFsAgEZ</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d1xDOlxyZXZhdHVyZVxVaXBhdGggUHJvY2Vzc2VzXFBvdF9BbGF2cmV6X0hhbnNlblByb2ozXFByb2plY3RfM1xJbml0aWFsaXphdGlvblxDbGVhckNhcnQueGFtbDEBXAF/AQJJA6MCDwIBAUwJ5QEUAgECTQvkARwCAQNNzgFN3wECAThTEeEBHAIBBF0Tax4CATZsE3AhAgEycRN1IwIBMHYTeicCASx7E4IBHgIBKIMBE5EBHgIBJpIBE5YBKAIBIZcBE64BGwIBFK8BE70BHgIBEr4BE8UBJQIBDcYBE9cBIwIBDNgBE98BHAIBCOABE+ABzwECAQVppgFp1AECATdupgFu1AECATVssgJsxgICATNx/gFxgwICATF4pgF41AECAS92pAJ2vgICAS2AAaYBgAHXAQIBK30/fUMCASp9Mn02AgEpjwGmAY8B2AECASeUAZEBlAGYAgIBJZQBowKUAakCAgEkkgFbkgFoAgEimAEVrQEgAgEXlwF9lwGKAQIBFbsBpgG7AdcBAgETvgFJvgFQAgEQwAFBwAFIAgEOwwGmAcMB3QECARHdAT7dAUoCAQvaAT/aAVMCAQngAZEB4AHMAQIBBpkBF6cBIgIBHagBF6wBLAIBGKUBlQGlAZwCAgEgmQFZmQFfAgEfpQGnAqUBrQICAR6qAZUBqgGcAgIBHKoBpwKqAa0CAgEbqAFfqAFsAgEZ</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
