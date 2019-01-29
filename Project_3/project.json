@@ -8,6 +8,7 @@
     "UiPath.Excel.Activities": "[2.4.6884.25683]",
     "UiPath.Mail.Activities": "[1.2.6863.29868]",
     "UiPath.Credentials.Activities": "[1.1.6239.18657]",
+<<<<<<< HEAD
     "UiPath.PDF.Activities": "[1.3.0]",
     "UiPath.WebAPI.Activities": "[1.3.0]",
     "UiPath.Database.Activities": "[1.2.6863.32528]"
@@ -15,6 +16,13 @@
   "schemaVersion": "3.2",
   "studioVersion": "18.4.1.0",
   "projectVersion": "1.0.6967.19496",
+=======
+    "Uipath.DataTableToJson.Activities": "[1.0.0]"
+  },
+  "schemaVersion": "3.2",
+  "studioVersion": "18.4.1.0",
+  "projectVersion": "1.0.1",
+>>>>>>> orders
   "runtimeOptions": {
     "autoDispose": false,
     "excludedLoggedData": [
@@ -34,6 +42,7 @@
         "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
         "required": false,
         "hasDefault": false
+<<<<<<< HEAD
       },
       {
         "name": "io_MaxOrderNumber",
@@ -48,5 +57,10 @@
         "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
       }
     ]
+=======
+      }
+    ],
+    "output": []
+>>>>>>> orders
   }
 }
