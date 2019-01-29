@@ -1,0 +1,6 @@
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API.Library\bin\Debug\Proj3API.Library.dll
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API.Library\bin\Debug\Proj3API.Library.pdb
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API.Library\obj\Debug\Proj3API.Library.csprojAssemblyReference.cache
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API.Library\obj\Debug\Proj3API.Library.csproj.CoreCompileInputs.cache
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API.Library\obj\Debug\Proj3API.Library.dll
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API.Library\obj\Debug\Proj3API.Library.pdb
