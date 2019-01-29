@@ -12,3 +12,5 @@ C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3A
 C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API.DataAccess\bin\Debug\netcoreapp2.2\Proj3API.DataAccess.pdb
 C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API.DataAccess\obj\Debug\netcoreapp2.2\Proj3API.DataAccess.dll
 C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API.DataAccess\obj\Debug\netcoreapp2.2\Proj3API.DataAccess.pdb
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API.DataAccess\bin\Debug\netcoreapp2.2\Proj3API.Library.dll
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API.DataAccess\bin\Debug\netcoreapp2.2\Proj3API.Library.pdb
