@@ -235,6 +235,15 @@
           "lib/net40-Client/UiPath.Credentials.Activities.dll": {}
         }
       },
+      "Uipath.DataTableToJson.Activities/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/_._": {}
+        },
+        "runtime": {
+          "lib/TestActivity.dll": {}
+        }
+      },
       "UiPath.Excel.Activities/2.4.6884.25683": {
         "type": "package",
         "dependencies": {
@@ -797,6 +806,17 @@
         "uipath.credentials.activities.nuspec"
       ]
     },
+    "Uipath.DataTableToJson.Activities/1.0.0": {
+      "sha512": "nELanax5njLmFbk2VnDINWyjAJZmYSRs2VxPat2wJQg3gFxyhrN+1jJmR3h9ZWatQocQwWkQLu6dVi+lpdtoLA==",
+      "type": "package",
+      "path": "uipath.datatabletojson.activities/1.0.0",
+      "files": [
+        ".signature.p7s",
+        "lib/TestActivity.dll",
+        "uipath.datatabletojson.activities.1.0.0.nupkg.sha512",
+        "uipath.datatabletojson.activities.nuspec"
+      ]
+    },
     "UiPath.Excel.Activities/2.4.6884.25683": {
       "sha512": "oszqRmyvGeYnC1HnoBVmje1bYA9uaf5wzUTQgOYe2OGjJRnWcNj3iEdzhefvuPluel+av4Lm41AQor5NXwAs4g==",
       "type": "package",
@@ -970,11 +990,12 @@
   "projectFileDependencyGroups": {
     "": [],
     ".NETFramework,Version=v4.6.1": [
-      "UiPath.Credentials.Activities >= 1.1.0",
+      "UiPath.Credentials.Activities >= 1.1.6239.18657 <= 1.1.6239.18657",
       "UiPath.Excel.Activities >= 2.4.6884.25683 <= 2.4.6884.25683",
       "UiPath.Mail.Activities >= 1.2.6863.29868 <= 1.2.6863.29868",
       "UiPath.System.Activities >= 18.4.1 <= 18.4.1",
-      "UiPath.UIAutomation.Activities >= 18.4.1 <= 18.4.1"
+      "UiPath.UIAutomation.Activities >= 18.4.1 <= 18.4.1",
+      "Uipath.DataTableToJson.Activities >= 1.0.0 <= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -984,9 +1005,9 @@
     "restore": {
       "projectUniqueName": "Project_3_Orders",
       "projectName": "Project_3_Orders",
-      "projectPath": "C:\\revature\\Ivan_Alvarez_Project_2\\Project_2_Attempt_2\\Project_3_Orders\\.local",
+      "projectPath": "C:\\revature\\Pot_Alvarez_Hansen_Project3\\Project_3\\.local",
       "packagesPath": "C:\\Users\\blyk\\.nuget\\packages\\",
-      "outputPath": "C:\\revature\\Ivan_Alvarez_Project_2\\Project_2_Attempt_2\\Project_3_Orders\\.local"
+      "outputPath": "C:\\revature\\Pot_Alvarez_Hansen_Project3\\Project_3\\.local"
     },
     "frameworks": {
       "net461": {
@@ -994,7 +1015,7 @@
           "UiPath.Credentials.Activities": {
             "include": "Runtime",
             "target": "Package",
-            "version": "[1.1.0, )"
+            "version": "[1.1.6239.18657, 1.1.6239.18657]"
           },
           "UiPath.Excel.Activities": {
             "include": "Runtime",
@@ -1015,21 +1036,14 @@
             "include": "Runtime",
             "target": "Package",
             "version": "[18.4.1, 18.4.1]"
+          },
+          "Uipath.DataTableToJson.Activities": {
+            "include": "Runtime",
+            "target": "Package",
+            "version": "[1.0.0, 1.0.0]"
           }
         }
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Project_3_Orders depends on UiPath.Credentials.Activities (>= 1.1.0) but UiPath.Credentials.Activities 1.1.0 was not found. An approximate best match of UiPath.Credentials.Activities 1.1.6239.18657 was resolved.",
-      "libraryId": "UiPath.Credentials.Activities",
-      "targetGraphs": [
-        ".NETFramework,Version=v4.6.1"
-      ]
-    }
-  ]
+  }
 }
