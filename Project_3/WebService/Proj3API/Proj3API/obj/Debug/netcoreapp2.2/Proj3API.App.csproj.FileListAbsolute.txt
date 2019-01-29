@@ -15,3 +15,5 @@ C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3A
 C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.App.csproj.CopyComplete
 C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.App.dll
 C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\obj\Debug\netcoreapp2.2\Proj3API.App.pdb
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\bin\Debug\netcoreapp2.2\Proj3API.Library.dll
+C:\revature\Uipath Processes\Pot_Alavrez_HansenProj3\Project_3\WebService\Proj3API\Proj3API\bin\Debug\netcoreapp2.2\Proj3API.Library.pdb

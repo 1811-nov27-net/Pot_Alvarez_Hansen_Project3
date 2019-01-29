@@ -682,13 +682,23 @@
       },
       "Proj3API.DataAccess/1.0.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.1"
+          "Microsoft.EntityFrameworkCore": "2.2.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.1",
+          "Proj3API.Library": "1.0.0"
         },
         "runtime": {
           "Proj3API.DataAccess.dll": {}
         },
         "compile": {
           "Proj3API.DataAccess.dll": {}
+        }
+      },
+      "Proj3API.Library/1.0.0": {
+        "runtime": {
+          "Proj3API.Library.dll": {}
+        },
+        "compile": {
+          "Proj3API.Library.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -3876,6 +3886,11 @@
       "hashPath": "system.linq.queryable.4.0.1.nupkg.sha512"
     },
     "Proj3API.DataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Proj3API.Library/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
