@@ -90,31 +90,11 @@
                     <Variable x:TypeArguments="s:String[]" Name="items" />
                     <Variable x:TypeArguments="x:Boolean" Name="eleExists" />
                   </Sequence.Variables>
-                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'User Name'" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
-                    <ui:Click.CursorPosition>
-                      <ui:CursorPosition Position="Center">
-                        <ui:CursorPosition.OffsetX>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetX>
-                        <ui:CursorPosition.OffsetY>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetY>
-                      </ui:CursorPosition>
-                    </ui:Click.CursorPosition>
-                    <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="6792edb243f2f4c6bda4ea6c580998d9" Selector="&lt;webctrl id='user_name' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
-                    </ui:Click.Target>
-                  </ui:Click>
                   <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type 'username' Into 'User Name'" EmptyField="True" sap2010:WorkflowViewState.IdRef="TypeInto_1" SendWindowMessages="False" SimulateType="True" Text="[in_LoginUsername]">
                     <ui:TypeInto.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="57868a7d45e5ed7187f8e7fedc2f9eaa" Selector="&lt;webctrl id='user_name' tag='INPUT' /&gt;" WaitForReady="COMPLETE" />
                     </ui:TypeInto.Target>
                   </ui:TypeInto>
-                  <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="tab - select 'Password'" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="tab" KeyModifiers="None" SendWindowMessages="False" SpecialKey="True">
-                    <ui:SendHotkey.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
-                    </ui:SendHotkey.Target>
-                  </ui:SendHotkey>
                   <ui:TypeSecureText DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Secure 'password' into 'Password' Text Box" EmptyField="True" sap2010:WorkflowViewState.IdRef="TypeSecureText_1" SecureText="[in_LoginPasswordSecure]" SendWindowMessages="False" SimulateType="True">
                     <ui:TypeSecureText.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="d2e8ec397c31151b08f81b8c48c682f4" Selector="&lt;webctrl id='user_pass' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
@@ -128,21 +108,7 @@
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="fb7d8ba051c8e5d6d48c54ffda2d24eb" Selector="&lt;webctrl id='login_button' tag='INPUT' /&gt;" WaitForReady="COMPLETE" />
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A  http://training.open...'" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
-                    <ui:Click.CursorPosition>
-                      <ui:CursorPosition Position="Center">
-                        <ui:CursorPosition.OffsetX>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetX>
-                        <ui:CursorPosition.OffsetY>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetY>
-                      </ui:CursorPosition>
-                    </ui:Click.CursorPosition>
-                    <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="623750f884053dc07a7704561af17670" Selector="&lt;webctrl parentid='orders_menu' tag='A' /&gt;" WaitForReady="INTERACTIVE" />
-                    </ui:Click.Target>
-                  </ui:Click>
+                  <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="http://training.openspan.com/order" />
                   <ui:UiElementExists DisplayName="Element Exists 'Remove' Button" Exists="[eleExists]" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
                     <ui:UiElementExists.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="84e6403ee411406f45a53d7611880a06" Selector="&lt;html title='Order | Pega Studio Training Web Application' /&gt;&lt;webctrl aaname='Remove' parentid='table_number1' tag='A' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
@@ -172,21 +138,7 @@
                       </ui:UiElementExists>
                     </Sequence>
                   </While>
-                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT  login_button'" sap2010:WorkflowViewState.IdRef="Click_7" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
-                    <ui:Click.CursorPosition>
-                      <ui:CursorPosition Position="Center">
-                        <ui:CursorPosition.OffsetX>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetX>
-                        <ui:CursorPosition.OffsetY>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetY>
-                      </ui:CursorPosition>
-                    </ui:Click.CursorPosition>
-                    <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="5a84183cabcb63c31a5c351cff45b447" Selector="&lt;webctrl id='login_button' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
-                    </ui:Click.Target>
-                  </ui:Click>
+                  <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap2010:WorkflowViewState.IdRef="NavigateTo_2" Url="http://training.openspan.com/order/quick_order" />
                   <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="items" DisplayName="Get Attribute 'SELECT  product_quantit...'" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
                     <ui:GetAttribute.Result>
                       <OutArgument x:TypeArguments="s:String[]">[items]</OutArgument>
@@ -287,16 +239,14 @@
       </Sequence>
     </FlowStep>
     <x:Reference>__ReferenceID0</x:Reference>
-    <sads:DebugSymbol.Symbol>d1xDOlxyZXZhdHVyZVxVaXBhdGggUHJvY2Vzc2VzXFBvdF9BbGF2cmV6X0hhbnNlblByb2ozXFByb2plY3RfM1xJbml0aWFsaXphdGlvblxDbGVhckNhcnQueGFtbDEBXAF/AQJJA6MCDwIBAUwJ5QEUAgECTQvkARwCAQNNzgFN3wECAThTEeEBHAIBBF0Tax4CATZsE3AhAgEycRN1IwIBMHYTeicCASx7E4IBHgIBKIMBE5EBHgIBJpIBE5YBKAIBIZcBE64BGwIBFK8BE70BHgIBEr4BE8UBJQIBDcYBE9cBIwIBDNgBE98BHAIBCOABE+ABzwECAQVppgFp1AECATdupgFu1AECATVssgJsxgICATNx/gFxgwICATF4pgF41AECAS92pAJ2vgICAS2AAaYBgAHXAQIBK30/fUMCASp9Mn02AgEpjwGmAY8B2AECASeUAZEBlAGYAgIBJZQBowKUAakCAgEkkgFbkgFoAgEimAEVrQEgAgEXlwF9lwGKAQIBFbsBpgG7AdcBAgETvgFJvgFQAgEQwAFBwAFIAgEOwwGmAcMB3QECARHdAT7dAUoCAQvaAT/aAVMCAQngAZEB4AHMAQIBBpkBF6cBIgIBHagBF6wBLAIBGKUBlQGlAZwCAgEgmQFZmQFfAgEfpQGnAqUBrQICAR6qAZUBqgGcAgIBHKoBpwKqAa0CAgEbqAFfqAFsAgEZ</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d1xDOlxyZXZhdHVyZVxVaXBhdGggUHJvY2Vzc2VzXFBvdF9BbGF2cmV6X0hhbnNlblByb2ozXFByb2plY3RfM1xJbml0aWFsaXphdGlvblxDbGVhckNhcnQueGFtbC0BXAF/AQJJA/MBDwIBAUwJtQEUAgECTQu0ARwCAQNNzgFN3wECATRTEbEBHAIBBF0TYSECATBiE2YnAgEsZxNuHgIBKG8Tb6kBAgEmcBN0KAIBIXUTjAEbAgEUjQETjQG1AQIBEo4BE5UBJQIBDZYBE6cBIwIBDKgBE68BHAIBCLABE7ABzwECAQVfpgFf1AECATNdsgJdxgICATFkpgFk1AECAS9ipAJivgICAS1spgFs1wECAStpP2lDAgEqaTJpNgIBKW+CAW+mAQIBJ3KRAXKYAgIBJXKjAnKpAgIBJHBbcGgCASJ2FYsBIAIBF3V9dYoBAgEVjQGCAY0BsgECAROOAUmOAVACARCQAUGQAUgCAQ6TAaYBkwHdAQIBEa0BPq0BSgIBC6oBP6oBUwIBCbABkQGwAcwBAgEGdxeFASICAR2GAReKASwCARiDAZUBgwGcAgIBIHdZd18CAR+DAacCgwGtAgIBHogBlQGIAZwCAgEciAGnAogBrQICARuGAV+GAWwCARk=</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="Click_3" sap:VirtualizedContainerService.HintSize="464,107.2" />
       <sap2010:ViewStateData Id="TypeInto_1" sap:VirtualizedContainerService.HintSize="464,135.2" />
-      <sap2010:ViewStateData Id="SendHotkey_1" sap:VirtualizedContainerService.HintSize="464,117.6" />
       <sap2010:ViewStateData Id="TypeSecureText_1" sap:VirtualizedContainerService.HintSize="464,107.2" />
       <sap2010:ViewStateData Id="Click_4" sap:VirtualizedContainerService.HintSize="464,107.2" />
-      <sap2010:ViewStateData Id="Click_5" sap:VirtualizedContainerService.HintSize="464,107.2" />
+      <sap2010:ViewStateData Id="NavigateTo_1" sap:VirtualizedContainerService.HintSize="464,60" />
       <sap2010:ViewStateData Id="UiElementExists_3" sap:VirtualizedContainerService.HintSize="464,107.2" />
       <sap2010:ViewStateData Id="Click_6" sap:VirtualizedContainerService.HintSize="314.4,107.2" />
       <sap2010:ViewStateData Id="UiElementExists_4" sap:VirtualizedContainerService.HintSize="314.4,107.2" />
@@ -308,7 +258,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="While_2" sap:VirtualizedContainerService.HintSize="464,538.4" />
-      <sap2010:ViewStateData Id="Click_7" sap:VirtualizedContainerService.HintSize="464,107.2" />
+      <sap2010:ViewStateData Id="NavigateTo_2" sap:VirtualizedContainerService.HintSize="464,60" />
       <sap2010:ViewStateData Id="GetAttribute_1" sap:VirtualizedContainerService.HintSize="464,135.2" />
       <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="314.4,92.8" />
       <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="336.8,217.6">
@@ -329,15 +279,15 @@
       <sap2010:ViewStateData Id="CommentOut_1" sap:VirtualizedContainerService.HintSize="464,555.2" />
       <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="464,60" />
       <sap2010:ViewStateData Id="LogMessage_2" sap:VirtualizedContainerService.HintSize="464,92.8" />
-      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="486.4,2882.4">
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="486.4,2483.2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="OpenBrowser_1" sap:VirtualizedContainerService.HintSize="500.8,2982.4" />
-      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="523.2,3107.2">
+      <sap2010:ViewStateData Id="OpenBrowser_1" sap:VirtualizedContainerService.HintSize="500.8,2583.2" />
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="523.2,2708">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
